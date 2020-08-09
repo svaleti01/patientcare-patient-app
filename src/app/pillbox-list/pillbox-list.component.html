@@ -1,0 +1,13 @@
+<ibm-table-container>
+        <ibm-table-header>
+            <h4 ibmTableHeaderTitle>Pillbox Tracker</h4>
+            <p ibmTableHeaderDescription>The pillboxes given to the patients can be tracked here</p>
+        </ibm-table-header>
+        <ibm-table
+            [model]="model"
+            [stickyHeader]="true"
+            [striped]="true"
+            [showSelectionColumn]="false"
+            [skeleton]="skeleton">
+        </ibm-table>
+    </ibm-table-container>
