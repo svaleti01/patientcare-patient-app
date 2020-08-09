@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { request } from 'graphql-request';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 const BASE_URL = 'https://patient-bff-arun205.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/graphql';
 
@@ -18,11 +20,14 @@ export class ClaimsAddComponent implements OnInit {
   public count3 = 0;
   public showLoader = false;
   public job = "";
-  public finance = "";
-  public community = "";
+  public finance = '';
+  public community = '';
   public survey = false;
+  public drugToast = false;
+  public surveyToast = false;
+  public watsonService = 'https://watson-nlu-arun205.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/analyzeEmotions';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     window.scrollTo(100, 200);
@@ -60,9 +65,32 @@ export class ClaimsAddComponent implements OnInit {
         this.showLoader = false;
         if (resp.addClaims == 'survey needed') {
           this.survey = true;
+        } else {
+          this.drugToast = true;
         }
 			});
     console.log(claimsMutation);
   }
 
+  submitSurvey() {
+    this.callWatsonService(this.job + ' ' + this.finance).subscribe((resp) => {
+      console.log(resp);
+      this.surveyToast = true;
+    })
+  }
+
+  callWatsonService(reqObj) {
+    console.log(reqObj);
+    return this.http.post(this.watsonService, reqObj)
+    .pipe(
+    map(resp => {
+      console.log(resp);
+      return resp;
+    } ));
+  }
+
+  clicked() {
+    console.log('clicked');
+    this.drugToast = false;
+  }
 }

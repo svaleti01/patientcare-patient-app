@@ -68,3 +68,34 @@
     <br>
     <button ibmButton="primary" (click)="submitSurvey()">Submit</button>
 </div>
+
+<div ibmRow *ngIf="drugToast">
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+    <div ibmCol class="custom-class-example">
+        <ibm-toast (click)="clicked()" [notificationObj]="{
+            type: 'success',
+            title: 'Success',
+            subtitle: 'Request Added',
+            showClose: showClose
+        }"></ibm-toast>
+    </div>
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+</div>
+
+
+<div ibmRow *ngIf="surveyToast">
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+    <div ibmCol class="custom-class-example">
+        <ibm-toast (click)="clicked()" [notificationObj]="{
+            type: 'success',
+            title: 'Success',
+            subtitle: 'Thanks for the survey',
+            showClose: showClose
+        }"></ibm-toast>
+    </div>
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+</div>

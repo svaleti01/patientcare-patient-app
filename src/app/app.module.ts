@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import {
@@ -16,7 +17,9 @@ import {
 	ButtonModule,
 	AccordionModule,
 	LoadingModule,
-	ModalModule
+	ModalModule,
+	NotificationModule,
+	NotificationService
 } from 'carbon-components-angular';
 import { StarterHomeComponent } from './starter-home/starter-home.component';
 
@@ -42,6 +45,7 @@ import { ClaimsAddComponent } from './claims-add/claims-add.component';
 		BrowserAnimationsModule,
 		CommonModule,
 		FormsModule,
+		HttpClientModule,
 		UIShellModule,
 		Notification20Module,
 		UserAvatar20Module,
@@ -56,8 +60,10 @@ import { ClaimsAddComponent } from './claims-add/claims-add.component';
 		ButtonModule,
 		AccordionModule,
 		LoadingModule,
-		ModalModule
+		ModalModule,
+		NotificationModule
 	],
+	providers: [NotificationService],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
