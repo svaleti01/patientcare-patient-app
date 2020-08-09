@@ -1,0 +1,70 @@
+<ibm-loading *ngIf="showLoader" [isActive]="true" [size]="normal" [overlay]="true"></ibm-loading>
+
+<div ibmGrid *ngIf="!survey">
+    <div ibmRow>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Drug name
+                <input ibmText placeholder="Enter drug name" [(ngModel)]="drugname1">
+            </ibm-label>
+        </div>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Requird numbers
+                <input ibmText placeholder="Enter count" [(ngModel)]="count1">
+            </ibm-label>
+        </div>
+    </div>
+
+    <br>
+    <div ibmRow>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Drug name
+                <input ibmText placeholder="Enter drug name" [(ngModel)]="drugname2">
+            </ibm-label>
+        </div>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Requird numbers
+                <input ibmText placeholder="Enter count" [(ngModel)]="count2">
+            </ibm-label>
+        </div>
+    </div>
+
+    <br>
+    <div ibmRow>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Drug name
+                <input ibmText placeholder="Enter drug name" [(ngModel)]="drugname3">
+            </ibm-label>
+        </div>
+        <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 4, 'sm': 12}">
+            <ibm-label>
+                Requird numbers
+                <input ibmText placeholder="Enter count" [(ngModel)]="count3">
+            </ibm-label>
+        </div>
+    </div>
+
+    <br>
+    <button ibmButton="primary" (click)="submit()">Submit</button>
+</div>
+
+<div ibmGrid *ngIf="survey">
+    <h1>Please fill this survey</h1>
+    <p>Are you good financially? Are you able to make both ends meet?</p>
+    <textarea ibmTextArea aria-label="textarea" [(ngModel)]="finance"></textarea>
+    
+    <br>
+    <p>Do you feel secured in the job? Do you think you need a better job?</p>
+    <textarea ibmTextArea aria-label="textarea" [(ngModel)]="job"></textarea>
+
+    <br>
+    <p>Are you active in the society? Do you take part in community activities</p>
+    <textarea ibmTextArea aria-label="textarea" [(ngModel)]="community"></textarea>
+    
+    <br>
+    <button ibmButton="primary" (click)="submitSurvey()">Submit</button>
+</div>

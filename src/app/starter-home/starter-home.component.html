@@ -1,15 +1,16 @@
 <div class="starter-home" ibmGrid>
-	<h1 class="title">Welcome, Pharmacist!</h1>
+	<h1 class="title">Welcome, Member!</h1>
+	<p>Enjoy a fruit at dinner and don't forget fiber</p>
 	<br>
 
 	<ibm-tabs [isNavigation]="false">
-		<ibm-tab heading="Pillbox list">
+		<ibm-tab heading="Request History">
 			<br>
-			<app-pillbox-list></app-pillbox-list>
+			<app-claims-list></app-claims-list>
 		</ibm-tab>
-		<ibm-tab heading="Add a Pillbox">
+		<ibm-tab heading="Add a Request">
 			<br>
-			<app-pillbox-add></app-pillbox-add>
+			<app-claims-add></app-claims-add>
 		</ibm-tab>
 	</ibm-tabs>
 </div>

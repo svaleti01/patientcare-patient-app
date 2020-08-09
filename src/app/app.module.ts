@@ -13,7 +13,10 @@ import {
 	TableModule,
 	InputModule,
 	SelectModule,
-	ButtonModule
+	ButtonModule,
+	AccordionModule,
+	LoadingModule,
+	ModalModule
 } from 'carbon-components-angular';
 import { StarterHomeComponent } from './starter-home/starter-home.component';
 
@@ -23,16 +26,16 @@ import { Notification20Module } from '@carbon/icons-angular/lib/notification/20'
 import { UserAvatar20Module } from '@carbon/icons-angular/lib/user--avatar/20';
 import { AppSwitcher20Module } from '@carbon/icons-angular/lib/app-switcher/20';
 import { HeaderComponent } from './header/header.component';
-import { PillboxListComponent } from './pillbox-list/pillbox-list.component';
-import { PillboxAddComponent } from './pillbox-add/pillbox-add.component';
+import { ClaimsListComponent } from './claims-list/claims-list.component';
+import { ClaimsAddComponent } from './claims-add/claims-add.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HeaderComponent,
 		StarterHomeComponent,
-		PillboxListComponent,
-		PillboxAddComponent
+		ClaimsListComponent,
+		ClaimsAddComponent
 	],
 	imports: [
 		BrowserModule,
@@ -50,7 +53,10 @@ import { PillboxAddComponent } from './pillbox-add/pillbox-add.component';
 		TableModule,
 		InputModule,
 		SelectModule,
-		ButtonModule
+		ButtonModule,
+		AccordionModule,
+		LoadingModule,
+		ModalModule
 	],
 	bootstrap: [AppComponent]
 })

@@ -1,0 +1,12 @@
+<ibm-loading *ngIf="showLoader" [isActive]="true" [size]="normal" [overlay]="true"></ibm-loading>
+
+<ibm-accordion>
+    <ibm-accordion-item *ngFor="let claims of claimsHistory; let i = index"
+    title="Date: {{claims.claimsdate}} ---   Status: {{claims.status}}" (click)="selected(i)">
+        <ibm-table-container>
+            <ibm-table [model]="model" [stickyHeader]="true" [striped]="true" [showSelectionColumn]="false" [skeleton]="skeleton">
+            </ibm-table>
+        </ibm-table-container>
+    </ibm-accordion-item>
+
+</ibm-accordion>
