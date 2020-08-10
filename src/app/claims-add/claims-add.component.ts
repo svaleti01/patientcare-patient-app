@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { request } from 'graphql-request';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { WatsonService } from './../watson.service';
 
 const BASE_URL = 'https://patient-bff-arun205.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/graphql';
 
@@ -25,12 +24,10 @@ export class ClaimsAddComponent implements OnInit {
   public survey = false;
   public drugToast = false;
   public surveyToast = false;
-  public watsonService = 'https://watson-nlu-arun205.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/analyzeEmotions';
 
-  constructor(private http: HttpClient) { }
+  constructor(@Inject(WatsonService) private watsonService) { }
 
   ngOnInit() {
-    window.scrollTo(100, 200);
   }
 
   submit() {
@@ -61,7 +58,6 @@ export class ClaimsAddComponent implements OnInit {
 
     request(BASE_URL, claimsMutation).then(
 			(resp: any) => {
-        console.log(resp);
         this.showLoader = false;
         if (resp.addClaims == 'survey needed') {
           this.survey = true;
@@ -69,28 +65,24 @@ export class ClaimsAddComponent implements OnInit {
           this.drugToast = true;
         }
 			});
-    console.log(claimsMutation);
   }
 
   submitSurvey() {
-    this.callWatsonService(this.job + ' ' + this.finance).subscribe((resp) => {
-      console.log(resp);
+    this.showLoader = true;
+    const reqObj = {
+      survey: this.job + ' ' + this.finance
+    }
+    this.watsonService.analyzeEmotions(reqObj).subscribe(response => {
+      console.log(response);
       this.surveyToast = true;
-    })
-  }
-
-  callWatsonService(reqObj) {
-    console.log(reqObj);
-    return this.http.post(this.watsonService, reqObj)
-    .pipe(
-    map(resp => {
-      console.log(resp);
-      return resp;
-    } ));
+      this.showLoader = false;
+    });
   }
 
   clicked() {
     console.log('clicked');
     this.drugToast = false;
+    this.surveyToast = false;
+    this.survey = false;
   }
 }
