@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { request } from 'graphql-request';
 import { TableModel, TableHeaderItem, TableItem } from 'carbon-components-angular';
 
-const BASE_URL = 'https://patient-bff-arun205.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/graphql';
+const BASE_URL = 'http://istio-ingressgateway-patientcare-istio.sandbox-ocp43-one-176292-be5b1ee812fa4041cc73b6bbf969fc88-0000.eu-gb.containers.appdomain.cloud/patientbff/graphql';
 
 const QueryClaims = `
 query {

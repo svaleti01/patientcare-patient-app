@@ -31,6 +31,7 @@ import { AppSwitcher20Module } from '@carbon/icons-angular/lib/app-switcher/20';
 import { HeaderComponent } from './header/header.component';
 import { ClaimsListComponent } from './claims-list/claims-list.component';
 import { ClaimsAddComponent } from './claims-add/claims-add.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
 	declarations: [
@@ -61,7 +62,8 @@ import { ClaimsAddComponent } from './claims-add/claims-add.component';
 		AccordionModule,
 		LoadingModule,
 		ModalModule,
-		NotificationModule
+		NotificationModule,
+		AppRoutingModule
 	],
 	providers: [NotificationService],
 	bootstrap: [AppComponent]
