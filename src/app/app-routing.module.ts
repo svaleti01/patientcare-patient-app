@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { StarterHomeComponent } from './starter-home/starter-home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/admin', pathMatch: 'full' },
+  {path: '', redirectTo: '/patient', pathMatch: 'full' },
   {path: 'patient' , component: StarterHomeComponent},
-  {path: '**', redirectTo: '/admin', pathMatch: 'full' }
+  {path: '**', redirectTo: '/patient', pathMatch: 'full' }
 ];
 
 @NgModule({

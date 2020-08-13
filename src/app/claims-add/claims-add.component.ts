@@ -23,7 +23,8 @@ export class ClaimsAddComponent implements OnInit {
   public community = '';
   public survey = false;
   public drugToast = false;
-  public surveyToast = false;
+  public surveyHappyToast = false;
+  public surveySadToast = false;
 
   constructor(@Inject(WatsonService) private watsonService) { }
 
@@ -73,16 +74,24 @@ export class ClaimsAddComponent implements OnInit {
       survey: this.job + ' ' + this.finance
     }
     this.watsonService.analyzeEmotions(reqObj).subscribe(response => {
-      console.log(response);
-      this.surveyToast = true;
+      console.log(response.joy * 100);
+      if (response.joy * 100 > 50) {
+        this.surveyHappyToast = true;
+        this.surveySadToast = false;
+      } else {
+        this.surveyHappyToast = false;
+        this.surveySadToast = true;
+      }
       this.showLoader = false;
+      this.finance = '';
+      this.job = '';
     });
   }
 
   clicked() {
-    console.log('clicked');
     this.drugToast = false;
-    this.surveyToast = false;
+    this.surveyHappyToast = false;
     this.survey = false;
+    this.surveySadToast = false;
   }
 }

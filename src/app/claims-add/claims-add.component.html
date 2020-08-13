@@ -56,15 +56,11 @@
     <h1>Please fill this survey</h1>
     <p>Are you good financially? Are you able to make both ends meet?</p>
     <textarea ibmTextArea aria-label="textarea" [(ngModel)]="finance"></textarea>
-    
+
     <br>
     <p>Do you feel secured in the job? Do you think you need a better job?</p>
     <textarea ibmTextArea aria-label="textarea" [(ngModel)]="job"></textarea>
 
-    <br>
-    <p>Are you active in the society? Do you take part in community activities</p>
-    <textarea ibmTextArea aria-label="textarea" [(ngModel)]="community"></textarea>
-    
     <br>
     <button ibmButton="primary" (click)="submitSurvey()">Submit</button>
 </div>
@@ -84,17 +80,34 @@
     </div>
 </div>
 
-
-<div ibmRow *ngIf="surveyToast">
+<div ibmRow *ngIf="surveyHappyToast">
     <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
     </div>
     <div ibmCol class="custom-class-example">
         <ibm-toast (click)="clicked()" [notificationObj]="{
-            type: 'success',
-            title: 'Success',
-            subtitle: 'Thanks for the survey',
-            showClose: showClose
-        }"></ibm-toast>
+                type: 'success',
+                title: 'Success',
+                subtitle: 'Thanks for the survey',
+                caption: 'Please consume the opioids as directed by the physician and strictly adhere to the schedule. Do not overconsume.
+                 Please contact us for any assistance.',
+                showClose: showClose
+            }"></ibm-toast>
+    </div>
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+</div>
+
+<div ibmRow *ngIf="surveySadToast">
+    <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
+    </div>
+    <div ibmCol class="custom-class-example">
+        <ibm-toast (click)="clicked()" [notificationObj]="{
+                    type: 'success',
+                    title: 'Success',
+                    subtitle: 'Thanks for the survey',
+                    caption: 'You will be provided with a connected pillbox when you visit the pharmacist. Please contact us for details.',
+                    showClose: showClose
+                }"></ibm-toast>
     </div>
     <div ibmCol class="custom-class-example" [columnNumbers]="{'md': 3, 'sm': 12}">
     </div>
